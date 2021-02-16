@@ -1,7 +1,7 @@
 import base64
 import json
 
-from locust import HttpUser, TaskSet, task, constant
+from locust import HttpUser, TaskSet, task, constant, LoadTestShape
 from random import randint, choice
 
 class MyCustomShape(LoadTestShape):
