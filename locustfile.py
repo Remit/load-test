@@ -1,4 +1,5 @@
 import base64
+import json
 
 from locust import HttpUser, TaskSet, task, constant
 from random import randint, choice
@@ -13,7 +14,7 @@ class WebTasks(TaskSet):
         data_bytes = data_string.encode('utf-8')
         base64string = base64.b64encode(data_bytes)
 
-        catalogue = self.client.get("/catalogue").json()
+        catalogue = json.loads(self.client.get("/catalogue"))
         category_item = choice(catalogue)
         item_id = category_item["id"]
 
