@@ -45,8 +45,8 @@ do_exec() {
       exit 1
   fi
 
-  echo "Will run $LOCUST_FILE against $TARGET_HOST. Spawning $REQUESTS total requests."
-  locust --host=http://$TARGET_HOST -f $LOCUST_FILE --num-request=$REQUESTS --no-web --csv=STEP
+  echo "Will run $LOCUST_FILE against $TARGET_HOST."
+  locust --host=http://$TARGET_HOST -f $LOCUST_FILE --headless --csv=STEP
   echo "done"
 }
 

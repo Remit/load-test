@@ -30,8 +30,8 @@ do_check() {
   if [ -n "${LOCUST_FILE:+1}" ]; then
   	echo "Locust file: $LOCUST_FILE"
   else
-  	LOCUST_FILE="locustfile.py" 
-  	echo "Default Locust file: $LOCUST_FILE" 
+  	LOCUST_FILE="locustfile.py"
+  	echo "Default Locust file: $LOCUST_FILE"
   fi
 }
 
@@ -39,14 +39,14 @@ do_exec() {
   sleep $INITIAL_DELAY
 
   # check if host is running
-  STATUS=$(curl -s -o /dev/null -w "%{http_code}" ${TARGET_HOST}) 
+  STATUS=$(curl -s -o /dev/null -w "%{http_code}" ${TARGET_HOST})
   if [ $STATUS -ne 200 ]; then
       echo "${TARGET_HOST} is not accessible"
       exit 1
   fi
 
-  echo "Will run $LOCUST_FILE against $TARGET_HOST. Spawning $CLIENTS clients and $REQUESTS total requests."
-  locust --host=http://$TARGET_HOST -f $LOCUST_FILE --clients=$CLIENTS --hatch-rate=5 --num-request=$REQUESTS --no-web --only-summary
+  echo "Will run $LOCUST_FILE against $TARGET_HOST. Spawning $CLIENTS clients."
+  locust --host=http://$TARGET_HOST -f $LOCUST_FILE --headless --users=$CLIENTS --spawn-rate=5 --only-summary
   echo "done"
 }
 
