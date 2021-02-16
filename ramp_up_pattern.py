@@ -13,7 +13,7 @@ class MyCustomShape(LoadTestShape):
 
         if run_time < self.time_limit:
             user_count = run_time
-            return (user_count, spawn_rate)
+            return (user_count, 20)
 
         return None
 

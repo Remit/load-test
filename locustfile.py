@@ -27,7 +27,7 @@ class WebTasks(TaskSet):
         #headers = {'content-type': 'application/json'}
         #self.client.post("/cart", data=json.dumps(payload), headers=headers)
         #self.client.post("/cart", json={"id": item_id, "quantity": 1})
-        resp = self.client.post("/cart", {"id": item_id, "quantity": 1})
+        self.client.post("/cart", json = {"id": item_id, "quantity": 1})
         self.client.get("/basket.html")
         self.client.post("/orders")
 
