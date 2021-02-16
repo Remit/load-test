@@ -30,7 +30,7 @@ do_check() {
   if [ -n "${LOCUST_FILE:+1}" ]; then
   	echo "Locust file: $LOCUST_FILE"
   else
-  	LOCUST_FILE="locustfile.py"
+  	LOCUST_FILE="ramp_up_pattern.py"
   	echo "Default Locust file: $LOCUST_FILE"
   fi
 }
