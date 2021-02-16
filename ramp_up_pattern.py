@@ -1,6 +1,6 @@
 import base64
 
-from locust import HttpLocust, LoadTestShape, TaskSet, task
+from locust import HttpUser, LoadTestShape, TaskSet, task
 from random import randint, choice
 
 class MyCustomShape(LoadTestShape):
@@ -36,7 +36,7 @@ class WebTasks(TaskSet):
         self.client.post("/orders")
 
 
-class Web(HttpLocust):
+class Web(HttpUser):
     task_set = WebTasks
     min_wait = 0
     max_wait = 0
