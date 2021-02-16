@@ -22,10 +22,11 @@ class WebTasks(TaskSet):
         self.client.get("/category.html")
         self.client.get("/detail.html?id={}".format(item_id))
         self.client.delete("/cart")
-        payload = {"id": item_id, "quantity": 1}
-        headers = {'content-type': 'application/json'}
-        self.client.post("/cart", data=json.dumps(payload), headers=headers)
+        #payload = {"id": item_id, "quantity": 1}
+        #headers = {'content-type': 'application/json'}
+        #self.client.post("/cart", data=json.dumps(payload), headers=headers)
         #self.client.post("/cart", json={"id": item_id, "quantity": 1})
+        resp = self.client.post("/cart", {"id": item_id, "quantity": 1})
         self.client.get("/basket.html")
         self.client.post("/orders")
 
